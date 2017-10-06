@@ -1,0 +1,3 @@
+yotta_admin:
+    resource: "@YottaAdminBundle/Controller"
+    type: annotation

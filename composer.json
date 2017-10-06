@@ -1,0 +1,38 @@
+{
+    "name": "yottacms/yotta-admin-bundle",
+    "description": "Yotta admin bundle",
+    "keywords": [
+        "yottacms",
+        "symfony",
+        "dependencies",
+        "bundle"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandr Hrischanovich",
+            "email": "info@asdf.by"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+		"symfony/dependency-injection": "^3.2",
+		"symfony/config": "^3.2",
+        "phpunit/phpunit": "^5.6.4",
+        "yottacms/yotta-unit-bundle": "^0.1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "YottaCms\\Bundle\\YottaAdminBundle\\": ""
+        },
+		"exclude-from-classmap": [
+            "Tests/"
+        ]
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}

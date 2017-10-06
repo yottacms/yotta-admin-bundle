@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        public: true
+        autoconfigure: true
+    
+    YottaCms\Bundle\YottaAdminBundle\EventListener\AdminToolbarListener:
+        arguments: ['@twig']
+        tags: [kernel.event_subscriber]
+
+    YottaCms\Bundle\YottaAdminBundle\Controller\DefaultController: ~
