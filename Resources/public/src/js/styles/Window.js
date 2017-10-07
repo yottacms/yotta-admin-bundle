@@ -3,7 +3,7 @@ import { lime, pink } from 'material-ui/colors';
 export default {} = theme => {
     
     const unit = theme.spacing.unit,
-        appBarHeight = unit * 9;
+        appBarHeight = unit * 7;
     
     return ({
         root: {
