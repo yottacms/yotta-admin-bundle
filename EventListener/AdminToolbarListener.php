@@ -20,9 +20,18 @@ class AdminToolbarListener implements EventSubscriberInterface
 
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        
         $response = $event->getResponse();
         $request = $event->getRequest();
+        
+        if (!$event->isMasterRequest()
+            || $request->isXmlHttpRequest()
+            || $response->isRedirection()
+            || ($response->headers->has('Content-Type') && false === strpos($response->headers->get('Content-Type'), 'html'))
+            || 'html' !== $request->getRequestFormat()
+            || false !== stripos($response->headers->get('Content-Disposition'), 'attachment;')
+        ) {
+            return;
+        }
 
         $this->injectToolbar($response, $request);
     }
