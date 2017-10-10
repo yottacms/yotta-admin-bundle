@@ -75,7 +75,7 @@ export default class extends React.Component {
                         {menuItems.map((item, index) => (
                             <MenuItem onClick={() => this.handleClickMenuItem(item.url)} key={index}>
                                 <ListItemIcon>
-                                    <Icon>{item.ico}</Icon>
+                                    <Icon>{item.icon}</Icon>
                                 </ListItemIcon>
                                 <ListItemText primary={item.name}/>
                             </MenuItem>

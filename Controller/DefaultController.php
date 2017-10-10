@@ -34,7 +34,7 @@ class DefaultController extends Controller
                 'name'  => $unit->getName(),
                 'description'  => $unit->getDescription(),
                 'url'  => $unit->getEntryPoint(),
-                'ico'  => $unit->getIco(),
+                'icon'  => $unit->getConfig()['icon'] ?? false,
             ));
             
         }
