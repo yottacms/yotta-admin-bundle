@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": ">=7.1",
+        "yottacms/framework": "0.*",
         "yottacms/yotta-unit-bundle": "0.*",
         "yottacms/yotta-router-bundle": "0.*"
     },
