@@ -21,7 +21,8 @@ class YottaAdminBundle extends Bundle
     
     public function registerBundles() {
         return [
-            \YottaCms\Bundle\YottaUnitBundle\YottaUnitBundle::class
+            \YottaCms\Bundle\YottaUnitBundle\YottaUnitBundle::class,
+            \YottaCms\Bundle\YottaRouterBundle\YottaRouterBundle::class
         ];
     }
     

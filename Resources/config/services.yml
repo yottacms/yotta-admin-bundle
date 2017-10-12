@@ -6,5 +6,12 @@ services:
     YottaCms\Bundle\YottaAdminBundle\EventListener\AdminToolbarListener:
         arguments: ['@twig']
         tags: [kernel.event_subscriber]
-
+    
     YottaCms\Bundle\YottaAdminBundle\Controller\DefaultController: ~
+
+    yotta_admin.routing_loader:
+        public: false
+        class: Symfony\Component\Routing\Router
+        arguments: ['@routing.loader', '@@YottaAdminBundle/Resources/config/routing.yml']
+        tags: [router]
+    
