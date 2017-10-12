@@ -16,14 +16,14 @@
         }
     ],
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "yottacms/yotta-unit-bundle": "0.*",
+        "yottacms/yotta-router-bundle": "0.*"
     },
     "require-dev": {
 		"symfony/dependency-injection": "^3.2",
 		"symfony/config": "^3.2",
         "phpunit/phpunit": "^5.6.4",
-        "yottacms/yotta-unit-bundle": "0.*",
-        "yottacms/yotta-router-bundle": "0.*",
         "symfony/event-dispatcher": "^3.3",
         "symfony/http-foundation": "^3.3",
         "symfony/http-kernel": "^3.3",
