@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             \YottaCms\Bundle\YottaAdminBundle\YottaAdminBundle::class
         );
         // ...
+        return $this->preloadBundles($bundles);
     }
     // ...
 }
