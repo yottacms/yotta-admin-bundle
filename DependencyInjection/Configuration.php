@@ -19,6 +19,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->booleanNode('enabled')->defaultValue(true)->end()
                 ->arrayNode('templating')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('use_react_library')->defaultValue(true)->end()
                     ->end()
