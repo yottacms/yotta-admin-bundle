@@ -27,10 +27,20 @@ class AppKernel extends Kernel
 ```YAML
 # app/config/routing.yml
 # ...
-yottadmin:
+yotta_admin:
     resource: '@YottaAdminBundle/Resources/config/routing.yml'
 ```
 ```Bash
 # and one more thing...
 php bin/console assets:install
+```
+
+## Default configuration
+```YAML
+# app/config/config.yml
+# ...
+yotta_admin:
+    enable: true
+    templating:
+        use_react_library: true # automatic insert js libraries for React in output html
 ```
