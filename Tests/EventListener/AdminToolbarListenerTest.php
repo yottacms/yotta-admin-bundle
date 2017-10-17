@@ -18,7 +18,7 @@ class AdminToolbarListenerTest extends TestCase
      */
     public function testInjectToolbar($content, $expected)
     {
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $m = new \ReflectionMethod($listener, 'injectToolbar');
         $m->setAccessible(true);
         
@@ -50,7 +50,7 @@ class AdminToolbarListenerTest extends TestCase
     {
         $response = new Response('<html><head></head><body></body></html>');
         $event = new FilterResponseEvent($this->getKernelMock(), $this->getRequestMock(), HttpKernelInterface::MASTER_REQUEST, $response);
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $listener->onKernelResponse($event);
 
         $this->assertEquals("<html><head></head><body>\nAdminToolbarHtml\n</body></html>", $response->getContent());
@@ -63,7 +63,7 @@ class AdminToolbarListenerTest extends TestCase
     {
         $response = new Response('<html><head></head><body></body></html>');
         $event = new FilterResponseEvent($this->getKernelMock(), $this->getRequestMock(), HttpKernelInterface::SUB_REQUEST, $response);
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $listener->onKernelResponse($event);
 
         $this->assertEquals('<html><head></head><body></body></html>', $response->getContent());
@@ -76,7 +76,7 @@ class AdminToolbarListenerTest extends TestCase
     {
         $response = new Response('<div>Some content</div>');
         $event = new FilterResponseEvent($this->getKernelMock(), $this->getRequestMock(), HttpKernelInterface::MASTER_REQUEST, $response);
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $listener->onKernelResponse($event);
 
         $this->assertEquals('<div>Some content</div>', $response->getContent());
@@ -89,7 +89,7 @@ class AdminToolbarListenerTest extends TestCase
     {
         $response = new Response('<html><head></head><body></body></html>');
         $event = new FilterResponseEvent($this->getKernelMock(), $this->getRequestMock(true), HttpKernelInterface::MASTER_REQUEST, $response);
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $listener->onKernelResponse($event);
 
         $this->assertEquals('<html><head></head><body></body></html>', $response->getContent());
@@ -102,7 +102,7 @@ class AdminToolbarListenerTest extends TestCase
     {
         $response = new Response('<html><head></head><body></body></html>');
         $event = new FilterResponseEvent($this->getKernelMock(), $this->getRequestMock(false, 'json'), HttpKernelInterface::MASTER_REQUEST, $response);
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $listener->onKernelResponse($event);
 
         $this->assertEquals('<html><head></head><body></body></html>', $response->getContent());
@@ -116,7 +116,7 @@ class AdminToolbarListenerTest extends TestCase
         $response = new Response('<html><head></head><body></body></html>');
         $response->headers->set('Content-Disposition', 'attachment; filename=test.html');
         $event = new FilterResponseEvent($this->getKernelMock(), $this->getRequestMock(false, 'html'), HttpKernelInterface::MASTER_REQUEST, $response);
-        $listener = new AdminToolbarListener($this->getTwigMock());
+        $listener = new AdminToolbarListener($this->getTwigMock(), $this->getContainerMock());
         $listener->onKernelResponse($event);
 
         $this->assertEquals('<html><head></head><body></body></html>', $response->getContent());
@@ -157,5 +157,10 @@ class AdminToolbarListenerTest extends TestCase
     protected function getKernelMock()
     {
         return $this->getMockBuilder('Symfony\Component\HttpKernel\Kernel')->disableOriginalConstructor()->getMock();
+    }
+    
+    protected function getContainerMock()
+    {
+        return $this->getMockBuilder('Symfony\Component\DependencyInjection\Container')->disableOriginalConstructor()->getMock();
     }
 }

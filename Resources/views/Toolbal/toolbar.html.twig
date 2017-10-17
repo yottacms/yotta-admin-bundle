@@ -4,11 +4,12 @@
     'url': path('yottaadmin_bootstrap')
     }|json_encode|e('html_attr')}}"/>
     
-<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js') }}"></script>
-<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js') }}"></script>
-
-<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.production.min.js') }}"></script>
-<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.production.min.js') }}"></script>
+{% if use_react_library %}
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+{% endif %}
 
 <script src="{{ asset('/bundles/yottaadmin/build/js/webpack-loader.js') }}"></script>
 <script src="{{ asset('/bundles/yottaadmin/build/js/vendor/material-ui.min.js') }}"></script>

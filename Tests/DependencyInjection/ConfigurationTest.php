@@ -12,11 +12,19 @@ class ConfigurationTest extends TestCase
     {
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(true), [[
-            'enabled' => true
+            'enabled'       => true,
+            'templating'    => array(
+                'use_react_library' => false
+            )
         ]]);
         
         $this->assertEquals(
-            array('enabled' => true),
+            array(
+                'enabled'       => true,
+                'templating'    => array(
+                    'use_react_library' => false
+                )
+            ),
             $config
         );
     }

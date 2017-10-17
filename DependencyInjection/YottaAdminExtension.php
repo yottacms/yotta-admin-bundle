@@ -20,6 +20,8 @@ class YottaAdminExtension extends Extension
         if (isset($config['enabled']) && $config['enabled']) {
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
             $loader->load('services.yml');
+            
+            $container->setParameter('yotta_admin', $config);
         }
     }
 

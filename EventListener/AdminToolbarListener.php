@@ -7,14 +7,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\DependencyInjection\Container;
 use Twig\Environment;
 
 class AdminToolbarListener implements EventSubscriberInterface
 {
     protected $twig;
+    protected $container;
 
-    public function __construct(Environment $twig)
+    public function __construct(Environment $twig, Container $container)
     {
+        $this->container = $container;
         $this->twig = $twig;
     }
 
@@ -45,9 +48,9 @@ class AdminToolbarListener implements EventSubscriberInterface
         $pos = strripos($content, '</body>');
 
         if (false !== $pos) {
-            $toolbar = "\n".$this->twig->render(
-                '@YottaAdmin/Toolbal/toolbar.html.twig'
-            )."\n";
+            $toolbar = "\n".$this->twig->render('@YottaAdmin/Toolbal/toolbar.html.twig', array(
+                'use_react_library' => $this->container->getParameter('yotta_admin')['templating']['use_react_library']
+            ))."\n";
             $content = substr($content, 0, $pos).$toolbar.substr($content, $pos);
             $response->setContent($content);
         }

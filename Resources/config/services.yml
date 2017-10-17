@@ -4,7 +4,7 @@ services:
         autoconfigure: true
     
     YottaCms\Bundle\YottaAdminBundle\EventListener\AdminToolbarListener:
-        arguments: ['@twig']
+        arguments: ['@twig', '@service_container']
         tags: [kernel.event_subscriber]
     
     YottaCms\Bundle\YottaAdminBundle\Controller\DefaultController: ~
