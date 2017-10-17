@@ -48,7 +48,12 @@ export default class RemoteComponent extends React.Component {
                     var exports = Function('return ' + source)(),
                         _return = exports.__esModule ? exports.default : exports;
                 } catch(error) {
+                    console.log(error);
                     var _return = () => <div dangerouslySetInnerHTML={{__html: source}}/>;
+                }
+                
+                if (typeof(_return) != "function") {
+                    throw Error('Loaded component is not React. Typeof(' + url + ') = ' + typeof(_return));
                 }
                 
                 return {

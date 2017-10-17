@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { teal, blue } from 'material-ui/colors';
+import { blue, blueGrey } from 'material-ui/colors';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { getSnapshot, destroy } from "mobx-state-tree"
+import { Provider } from "mobx-react";
 import { HashRouter, Route } from 'react-router-dom'
 
 import AppBar from './AppBar';
-import Window from './Window';
+import ModuleWindow from './Window';
 
 import ModelAdmin from '../models/Admin';
 
@@ -25,8 +26,8 @@ export default class extends React.Component {
         if (this.store) destroy(this.store);
         
         this.store = ModelAdmin.create({
-            title: this.props.title
-        })
+            title: 'Loading...'
+        });
         
     }
     
@@ -34,18 +35,20 @@ export default class extends React.Component {
         return (
             <MuiThemeProvider theme={createMuiTheme({
                 palette: {
-                    primary: teal,
+                    primary: blueGrey,
                     secondary: blue,
                 }
             })}>
-                <HashRouter>
-                    <Route render={props => 
-                        <div>
-                            <AppBar {...props} {...this.props} store={this.store}/>
-                            <Window {...props} {...this.props} store={this.store}/> 
-                        </div>
-                    }/>
-                </HashRouter>
+                <Provider store={this.store}>
+                    <HashRouter>
+                        <Route render={props => 
+                            <div>
+                                <AppBar {...props} {...this.props} store={this.store}/>
+                                <ModuleWindow {...props} {...this.props} store={this.store}/> 
+                            </div>
+                        }/>
+                    </HashRouter>
+                </Provider>
             </MuiThemeProvider>
         )
     }

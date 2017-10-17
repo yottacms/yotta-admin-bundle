@@ -1,8 +1,8 @@
-import { blueGrey } from 'material-ui/colors';
+import Settings from './Settings';
 
 export default {} = theme => {
     
-    const appBarHeight = theme.spacing.unit * 7;
+    const appBarHeight = Settings.appBarHeight(theme.spacing.unit);
     
     return ({
         body: {
@@ -14,7 +14,6 @@ export default {} = theme => {
         appBar: {
             height: appBarHeight,
             boxSizing: 'inherit',
-            background: blueGrey[400],
             
             '& $toolBar': {
                 minHeight: appBarHeight
@@ -23,6 +22,9 @@ export default {} = theme => {
             toolBar: {
                 paddingLeft: theme.spacing.unit,
                 paddingRight: theme.spacing.unit,
+            },
+            menuIcon: {
+                textDecoration: 'none'
             }
     });
     

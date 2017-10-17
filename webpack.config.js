@@ -6,11 +6,11 @@ Encore
 
     .addPlugin(new webpack.optimize.CommonsChunkPlugin({name: 'webpackloader', filename: 'js/webpack-loader.js'}))
 
-	.configureBabel(function(babelConfig) {
-		babelConfig.presets.push('stage-2');
-		babelConfig.presets.push('react');
+    .configureBabel(function(babelConfig) {
+        babelConfig.presets.push('stage-2');
+        babelConfig.presets.push('react');
         babelConfig.plugins.push('transform-decorators-legacy');
-	})
+    })
 
     .setOutputPath('Resources/public/build')
     .setPublicPath('/bundles/yottaadmin/build/')
@@ -20,10 +20,10 @@ Encore
     
     .createSharedEntry('js/vendor/material-ui.min', ['material-ui'])
 
-    .addEntry('js/index', './Resources/public/src/js/index')
-    .addEntry('js/app', './Resources/public/src/js/components/app')
+    .addEntry('js/index', './Resources/public/.yottaadmin/js/index')
+    .addEntry('js/app', './Resources/public/.yottaadmin/js/components/App')
     
-    .addStyleEntry('css/fonts', './Resources/public/src/css/fonts.scss')
+    .addStyleEntry('css/fonts', './Resources/public/.yottaadmin/css/fonts.scss')
     .enableSassLoader()
     
 ;
