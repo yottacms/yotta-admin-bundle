@@ -20,7 +20,7 @@ class DefaultController extends Controller
     {
         $returnArray = [
             'url'       => '/bundles/yottaadmin/build/js/app.js',
-            'title'    => 'YottaCMS.Admin',
+            'title'    => 'Yotta.Admin',
             'bundle'    => [],
             'widget'    => [],
             'system'    => [],
@@ -35,6 +35,7 @@ class DefaultController extends Controller
                 'description'  => $unit->getDescription(),
                 'url'  => $unit->getEntryPoint(),
                 'icon'  => $unit->getConfig()['icon'] ?? false,
+                'developer'  => $unit->getConfig()['developer'] ?? false,
             ));
             
         }

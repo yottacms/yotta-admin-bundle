@@ -49,7 +49,7 @@ class DefaultControllerTest extends TestCase
         
         return [[
             array($itemUnit),
-            '{"url":"\/bundles\/yottaadmin\/build\/js\/app.js","title":"YottaCMS.Admin","bundle":[{"name":"FakeUnit","description":null,"url":null,"icon":false}],"widget":[],"system":[]}'
+            '{"url":"\/bundles\/yottaadmin\/build\/js\/app.js","title":"Yotta.Admin","bundle":[{"name":"FakeUnit","description":null,"url":null,"icon":false,"developer":false}],"widget":[],"system":[]}'
         ]];
     }
 }
