@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { blue, blueGrey } from 'material-ui/colors';
+import { pink, teal } from 'material-ui/colors';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { getSnapshot, destroy } from "mobx-state-tree"
 import { Provider } from "mobx-react";
@@ -35,8 +35,8 @@ export default class extends React.Component {
         return (
             <MuiThemeProvider theme={createMuiTheme({
                 palette: {
-                    primary: blueGrey,
-                    secondary: blue,
+                    primary: teal,
+                    secondary: pink,
                 }
             })}>
                 <Provider store={this.store}>
