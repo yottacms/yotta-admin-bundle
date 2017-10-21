@@ -7,7 +7,6 @@ import {
     MenuItem, IconButton 
 } from 'material-ui';
 import { observer } from 'mobx-react';
-import { Link } from 'react-router-dom'
 
 import styleSheet from '../styles/Navigation'
 
@@ -44,13 +43,8 @@ export default class extends React.Component {
     
     handleClickMenuItem = path => {
 
-        const { history } = this.context.router;
-
         this.closeNavigation();
-        
-        if (history.location.pathname != path) {
-            history.push(path);
-        }
+        this.context.router.history.push(path);
 
     }
     

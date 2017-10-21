@@ -1,24 +1,60 @@
 import React from 'react';
-import { Paper } from 'material-ui';
-import { withStyles } from 'material-ui/styles';
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
-import { observer } from 'mobx-react';
+import { Snackbar, Button } from 'material-ui';
+import Fade from 'material-ui/transitions/Fade';
 
-import styleSheet from '../styles/Window'
+import FakeProgressBar from './FakeProgressBar'
 import RemoteComponent from '../utils/remote-component';
 
-@withStyles(styleSheet)
-@observer
 export default class extends React.Component {
-	
-	render() {
+    
+    progressBar: object;
+    
+    state = {
+        errorLoading: false
+    }
+    
+    loadComplete = () => {
+        if (this.progressBar) {
+            this.progressBar.setState({ visible: false });
+        }
+    }
+    
+    loadError = (error) => {
+        this.setState({error: error});
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        if (this.progressBar) {
+            this.progressBar.setState({ visible: true });
+        }
+    }
+    
+    render() {
         
-		const {classes, location} = this.props;
-                
-		return location.pathname == '/' ? null : (
-            <RemoteComponent {...this.props} url={location.pathname}/>
-		);
+        if (this.state.error) {
+            
+            return <Snackbar
+                open={true}
+                transition={Fade}
+                SnackbarContentProps={{
+                    'aria-describedby': 'message-id',
+                }}
+                message={<span id="message-id">Network error: {this.state.error.toString()}</span>}
+                action={<Button color="accent" dense onClick={()=>this.setState({error: false})}>Reload page</Button>}
+            />;
 
-	}
+        }
+        
+        const { location } = this.props;
+        
+        return location.pathname == '/' ? null : [
+            <FakeProgressBar innerRef={progressBar => this.progressBar = progressBar} key="FakeProgressBar"/>,
+            <RemoteComponent {...this.props} url={location.pathname} 
+                onLoad={this.loadComplete} 
+                onError={this.loadError}
+                key="RemoteComponent"/>
+        ];
+
+    }
  
 }

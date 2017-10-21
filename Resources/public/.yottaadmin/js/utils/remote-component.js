@@ -5,11 +5,13 @@ export default class RemoteComponent extends React.Component {
 
     static propTypes = {
         onLoad: PropTypes.func,
+        onError: PropTypes.func,
         url: PropTypes.string.isRequired,
     };
     
     static defaultProps = {
-        onLoad: () => {}
+        onLoad: () => {},
+        onError: () => {}
     }
     
     state = {
@@ -18,19 +20,40 @@ export default class RemoteComponent extends React.Component {
     }
     
     componentDidMount() {
+        this.componentWillReceiveProps(this.props);
+    }
     
-        const { onLoad, url } = this.props;
+    componentWillReceiveProps(nextProps) {
+        this._componentAsyncLoad(nextProps);
+    }
+    
+    shouldComponentUpdate(nextProps, nextState) {
+
+        if (nextState.Component) {
+            return true;
+        }
+
+        return false;
+
+    }
+    
+    render() {
+        return this.state.Component ? <this.state.Component {...this.state.Props} /> : null;
+    }
+    
+    _componentAsyncLoad(props) {
         
+        const { url, onLoad, onError } = props;
+
         this._loadScript(url, this.props)
             .then(({Component, Props}) => {
                 this.setState({Component, Props});
                 onLoad();
+            })
+            .catch(function(err) {  
+                onError(err);
             });
 
-    }
-
-    render() {
-        return this.state.Component ? <this.state.Component {...this.state.Props}/> : null;
     }
     
     _loadScript(url, props) {
@@ -61,7 +84,7 @@ export default class RemoteComponent extends React.Component {
                     Props: props
                 };
                 
-            });
+            })
             
     }
     

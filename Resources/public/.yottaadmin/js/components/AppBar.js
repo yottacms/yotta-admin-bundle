@@ -13,18 +13,20 @@ export default class extends React.Component {
     
     componentDidMount() {
         document.body.className = [document.body.className, this.props.classes.body].join(' ');
-        this.componentWillUpdate();
+        this.componentDidUpdate();
     }
     
-    componentWillUpdate() {
-        this.props.store.setTitle(this.props.title);
+    componentDidUpdate() {
+        this.props.location.pathname == '/'
+            ? this.props.store.setTitle(this.props.title)
+            : this.props.store.setTitle('Loading...');
     }
     
     render() {
             
         const {classes, store, location} = this.props,
             isHomePage = location.pathname == '/';
-                
+            
         return (
             <AppBar className={classes.appBar}>
             
@@ -32,8 +34,8 @@ export default class extends React.Component {
                     
                     <Navigation location={this.props.location} menuItems={this.props.bundle}/>
 
-                    <div className={classes.flex}>
-                        <AppBarTitle {...this.props} />
+                    <div className={classes.flexTitle}>
+                        <AppBarTitle {...this.props}/>
                     </div>
                     
                     {isHomePage && (
