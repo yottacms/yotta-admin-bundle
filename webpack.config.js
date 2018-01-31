@@ -18,7 +18,14 @@ Encore
 
     .cleanupOutputBeforeBuild()
     
-    .createSharedEntry('js/vendor/material-ui.min', ['material-ui'])
+    .createSharedEntry('js/vendor/vendor', [
+        'material-ui', 
+        'material-ui-icons', 
+        'mobx-react',
+        'mobx-state-tree',
+        'react-router-dom'
+    ])
+
 
     .addEntry('js/index', './Resources/public/.yottaadmin/js/index')
     .addEntry('js/app', './Resources/public/.yottaadmin/js/components/App')
@@ -31,6 +38,11 @@ Encore
 module.exports = Encore.getWebpackConfig();
 module.exports.externals = [{
         'react': 'React',
-        'react-dom': 'ReactDOM'
+        'react-dom': 'ReactDOM',
+        // 'material-ui': 'window["material-ui"]',
+        'react-addons-transition-group': 'var React.addons.TransitionGroup',
+        'react-addons-pure-render-mixin': 'var React.addons.PureRenderMixin',
+        'react-addons-create-fragment': 'var React.addons.createFragment',
+        'react-addons-update': 'var React.addons.update'
     }
 ];

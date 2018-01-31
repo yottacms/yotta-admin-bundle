@@ -2,6 +2,6 @@
   "/bundles/yottaadmin/build/css/fonts.css": "/bundles/yottaadmin/build/css/fonts.css",
   "/bundles/yottaadmin/build/js/app.js": "/bundles/yottaadmin/build/js/app.js",
   "/bundles/yottaadmin/build/js/index.js": "/bundles/yottaadmin/build/js/index.js",
-  "/bundles/yottaadmin/build/js/vendor/material-ui.min.js": "/bundles/yottaadmin/build/js/vendor/material-ui.min.js",
+  "/bundles/yottaadmin/build/js/vendor/vendor.js": "/bundles/yottaadmin/build/js/vendor/vendor.js",
   "/bundles/yottaadmin/build/webpackloader.js": "/bundles/yottaadmin/build/js/webpack-loader.js"
 }
