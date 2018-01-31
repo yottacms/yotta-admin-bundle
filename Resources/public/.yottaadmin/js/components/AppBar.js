@@ -44,7 +44,7 @@ export default class extends React.Component {
                     
                     {!isHomePage && (
                         <Link to="/" className={classes.menuIcon}>
-                            <IconButton color="contrast">
+                            <IconButton color="inherit">
                                 <Icon>close</Icon>
                             </IconButton>
                         </Link>

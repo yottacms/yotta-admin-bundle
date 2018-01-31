@@ -8,6 +8,9 @@ export default {} = theme => {
     return ({
         body: {
             paddingTop: appBarHeight,
+            '& a': {
+                color: 'inherit'
+            }
         },
         flexTitle: {
             flex: 1,

@@ -58,7 +58,7 @@ export default class extends React.Component {
         return (
             <div>
 
-                <IconButton color="contrast"
+                <IconButton color="inherit"
                     onClick={this.openNavigation}>
                     <Icon>menu</Icon>
                 </IconButton>

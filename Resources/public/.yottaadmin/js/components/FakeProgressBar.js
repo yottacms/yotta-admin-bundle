@@ -49,7 +49,7 @@ export default class extends React.Component {
         const { classes } = this.props;
         
         return this.state.visible
-            ? <LinearProgress className={classes.progressBar} color="accent" mode="determinate" value={this.state.completed}/>
+            ? <LinearProgress className={classes.progressBar} color="secondary" mode="determinate" value={this.state.completed}/>
             : null
         ;
 
