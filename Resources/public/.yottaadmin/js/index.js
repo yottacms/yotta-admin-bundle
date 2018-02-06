@@ -7,5 +7,5 @@ var initProps = JSON.parse(rootElement.getAttribute('data-initProps'));
 
 ReactDOM.render(
     <RemoteComponent {...initProps}/>,
-    document.getElementById('admin_toolbar')
+    rootElement
 );

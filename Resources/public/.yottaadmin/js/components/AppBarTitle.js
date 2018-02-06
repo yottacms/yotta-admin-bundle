@@ -11,7 +11,7 @@ export default class extends React.Component {
         const { classes, store } = this.props;
                 
         return (
-            <Typography type="title" color="inherit">
+            <Typography variant="title" color="inherit">
                 {store.title}
             </Typography>
         );
