@@ -66,7 +66,7 @@ export default class extends React.Component {
                 { menuItems.length > 0 && (
                     <Drawer
                         open={this.state.openNavigation}
-                        onRequestClose={this.closeNavigation}
+                        onClose={this.closeNavigation}
                         >
                         { menuItemsUser.length > 0 && (
                             <List subheader={<ListSubheader>Yotta.Admin modules</ListSubheader>} className={classes.list}>
@@ -75,7 +75,7 @@ export default class extends React.Component {
                                         <ListItemIcon>
                                             <Icon>{item.icon}</Icon>
                                         </ListItemIcon>
-                                        <ListItemText primary={item.name}/>
+                                        <ListItemText primary={item.name} secondary={item.description}/>
                                     </MenuItem>
                                 )) }
                             </List>
@@ -90,7 +90,7 @@ export default class extends React.Component {
                                         <ListItemIcon>
                                             <Icon>{item.icon}</Icon>
                                         </ListItemIcon>
-                                        <ListItemText primary={item.name}/>
+                                        <ListItemText primary={item.name} secondary={item.description}/>
                                     </MenuItem>
                                 ))}
                             </List>
