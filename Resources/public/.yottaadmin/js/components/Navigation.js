@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import { 
-    Icon, ListItem, ListItemIcon, ListItemText, 
+import { withStyles } from '@material-ui/core/styles';
+import {
+    Icon, ListItem, ListItemIcon, ListItemText,
     Drawer, List, ListSubheader, Divider,
-    MenuItem, IconButton 
-} from 'material-ui';
+    MenuItem, IconButton
+} from '@material-ui/core';
 import { observer } from 'mobx-react';
 
 import styleSheet from '../styles/Navigation'
@@ -13,7 +13,7 @@ import styleSheet from '../styles/Navigation'
 @observer
 @withStyles(styleSheet)
 export default class extends React.Component {
-    
+
     static contextTypes = {
         router: PropTypes.shape({
             history: PropTypes.shape({
@@ -21,7 +21,7 @@ export default class extends React.Component {
             }).isRequired
         }).isRequired
     }
-    
+
     state = {
         anchorEl: null,
         openNavigation: false,
@@ -29,32 +29,32 @@ export default class extends React.Component {
 
     openNavigation = event => {
         this.setState({
-            openNavigation: true, 
+            openNavigation: true,
             anchorEl: event.currentTarget
         });
     }
-    
+
     closeNavigation = () => {
         this.setState({
-            openNavigation: false, 
+            openNavigation: false,
             anchorEl: null
         });
     }
-    
+
     handleClickMenuItem = path => {
 
         this.closeNavigation();
         this.context.router.history.push(path);
 
     }
-    
+
     render() {
-    
+
         const {classes, store, location, menuItems} = this.props,
             menuItemsUser = menuItems.filter(item => { return !item.developer }),
             menuItemsDeveloper = menuItems.filter(item => { return item.developer }),
             isHomePage = location.pathname == '/';
-            
+
         return (
             <div>
 
@@ -62,7 +62,7 @@ export default class extends React.Component {
                     onClick={this.openNavigation}>
                     <Icon>menu</Icon>
                 </IconButton>
-                    
+
                 { menuItems.length > 0 && (
                     <Drawer
                         open={this.state.openNavigation}
@@ -101,5 +101,5 @@ export default class extends React.Component {
         );
 
     }
- 
+
 }

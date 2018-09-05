@@ -1,38 +1,37 @@
 import React from 'react';
-import { Snackbar, Button } from 'material-ui';
-import Fade from 'material-ui/transitions/Fade';
+import { Snackbar, Button, Fade} from '@material-ui/core';
 
 import FakeProgressBar from './FakeProgressBar'
 import RemoteComponent from '../utils/remote-component';
 
 export default class extends React.Component {
-    
+
     progressBar: object;
-    
+
     state = {
         errorLoading: false
     }
-    
+
     loadComplete = () => {
         if (this.progressBar) {
             this.progressBar.setState({ visible: false });
         }
     }
-    
+
     loadError = (error) => {
         this.setState({error: error});
     }
-    
+
     componentWillReceiveProps(nextProps) {
         if (this.progressBar) {
             this.progressBar.setState({ visible: true });
         }
     }
-    
+
     render() {
-        
+
         if (this.state.error) {
-            
+
             return <Snackbar
                 open={true}
                 transition={Fade}
@@ -44,17 +43,17 @@ export default class extends React.Component {
             />;
 
         }
-        
+
         const { location } = this.props;
-        
+
         return location.pathname == '/' ? null : [
             <FakeProgressBar innerRef={progressBar => this.progressBar = progressBar} key="FakeProgressBar"/>,
-            <RemoteComponent {...this.props} url={location.pathname} 
-                onLoad={this.loadComplete} 
+            <RemoteComponent {...this.props} url={location.pathname}
+                onLoad={this.loadComplete}
                 onError={this.loadError}
                 key="RemoteComponent"/>
         ];
 
     }
- 
+
 }

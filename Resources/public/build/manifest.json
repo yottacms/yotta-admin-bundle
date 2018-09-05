@@ -1,7 +1,7 @@
 {
-  "/bundles/yottaadmin/build/css/fonts.css": "/bundles/yottaadmin/build/css/fonts.css",
-  "/bundles/yottaadmin/build/js/app.js": "/bundles/yottaadmin/build/js/app.js",
-  "/bundles/yottaadmin/build/js/index.js": "/bundles/yottaadmin/build/js/index.js",
-  "/bundles/yottaadmin/build/js/vendor/vendor.js": "/bundles/yottaadmin/build/js/vendor/vendor.js",
-  "/bundles/yottaadmin/build/webpackloader.js": "/bundles/yottaadmin/build/js/webpack-loader.js"
+  "yottaadmin/js/vendor/vendor.js": "/bundles/yottaadmin/build/js/vendor/vendor.js",
+  "yottaadmin/js/app.js": "/bundles/yottaadmin/build/js/app.js",
+  "yottaadmin/js/index.js": "/bundles/yottaadmin/build/js/index.js",
+  "yottaadmin/css/fonts.css": "/bundles/yottaadmin/build/css/fonts.css",
+  "yottaadmin/webpackloader.js": "/bundles/yottaadmin/build/js/webpack-loader.js"
 }

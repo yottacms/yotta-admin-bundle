@@ -1,10 +1,10 @@
-import { blueGrey } from 'material-ui/colors';
+import { blueGrey } from '@material-ui/core/colors';
 import Settings from './Settings';
 
 export default {} = theme => {
-    
+
     const appBarHeight = Settings.appBarHeight(theme.spacing.unit);
-    
+
     return ({
         body: {
             paddingTop: appBarHeight,
@@ -15,7 +15,7 @@ export default {} = theme => {
         flexTitle: {
             flex: 1,
             minWidth: 0,
-            
+
             '& > *': {
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -26,7 +26,7 @@ export default {} = theme => {
             height: appBarHeight,
             boxSizing: 'inherit',
             background: blueGrey[400],
-            
+
             '& $toolBar': {
                 minHeight: appBarHeight
             }
@@ -39,5 +39,5 @@ export default {} = theme => {
                 textDecoration: 'none'
             }
     });
-    
+
 };

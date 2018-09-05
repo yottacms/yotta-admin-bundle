@@ -40,7 +40,7 @@ php bin/console assets:install
 # app/config/config.yml
 # ...
 yotta_admin:
-    enable: true
+    enabled: true
     templating:
         use_react_library: true # automatic insert js libraries for React in output html
 ```
